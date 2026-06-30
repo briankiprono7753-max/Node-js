@@ -26,7 +26,16 @@ const app = express();
 const store = new MongoDBStore({
   uri: MONGODB_URI,
   collection: "sessions",
+  connectionOptions: {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
 });
+
+store.on("error", function (error) {
+  console.log("Session store error:", error);
+});
+
 const csrfProtection = csrf();
 
 const fileStorage = multer.diskStorage({
