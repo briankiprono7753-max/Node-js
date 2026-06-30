@@ -1,5 +1,7 @@
 const path = require("path");
 const fs = require("fs");
+const dns = require("dns");
+dns.setServers(["1.1.1.1", "8.8.8.8"]);
 
 const express = require("express");
 const bodyParser = require("body-parser");
